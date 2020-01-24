@@ -1,0 +1,13 @@
+<%= render 'form' %>
+<% if @user_info %> 
+    <div>So your name is <%= @user_info.realname %>, huh? Here are your stupid photos.</div>
+<% end %>
+
+<% if @ids && @ids.any? %>
+    <% @ids.each do |id| %>
+        <% info = flickr.photos.getInfo(:photo_id => id) %>
+            <%= link_to(image_tag(FlickRaw.url_s(info), :size => "100x100", :title => info.title), FlickRaw.url(info)) %>
+    <% end %>
+<% end %>
+
+

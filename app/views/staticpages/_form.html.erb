@@ -1,0 +1,5 @@
+<%= form_tag("/", :method => :get) do %>
+    <%= label_tag(:user_id, "Enter your Flick ID") %>
+    <%= text_field_tag(:user_id) %>
+    <%= submit_tag("Find my photos") %>
+<% end %>
