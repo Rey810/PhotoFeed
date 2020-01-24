@@ -9,7 +9,7 @@ module FlickrHelper
 
     #get the ids of the users photos
     def get_photo_ids
-        photos = flickr.photos.search(:user_id => @user_id, :per_page => 10)
+        photos = flickr.photos.search(:user_id => @user_id).to_a.values_at(0..10)
         @ids = photos.map { |photo| photo.id }
         rescue Exception
             flash[:warning] = "No photos found!"
